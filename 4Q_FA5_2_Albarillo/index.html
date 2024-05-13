@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=!, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="nameInput">
+    <button onclick="addContact()">Add</button>
+    <button onclick="removeContact()">Remove</button>
+    <p id="contacts"></p>
+    
+    <script>
+      var contacts = [];
+    
+      function displayContacts() {
+        var output = "";
+        for (var l = 0; l < contacts.length; l++) {
+          output += contacts[l] + " ";
+        }
+        document.getElementById("contacts").innerHTML = output;
+      }
+    
+      function addContact() {
+        var name = document.getElementById("nameInput").value;
+        if (name != "") {
+          contacts.push(name);
+          if (contacts.length > 7) {
+            contacts.shift();
+          }
+          displayContacts();
+          document.getElementById("nameInput").value = "";
+        }
+      }
+    
+      function removeContact() {
+        if (contacts.length > 0) {
+          contacts.pop();
+          displayContacts();
+        }
+      }
+    </script>
+</script>
+</body>
+</html>
